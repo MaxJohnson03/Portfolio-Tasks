@@ -1,0 +1,11 @@
+
+Runners = []
+print("Enter the runners numbers and their times separated by two colons e.g.(123::300)")
+print("Type 'END' when you are done")
+while True:
+    user_input = input()
+    if user_input =="END":
+        break
+    else:
+        user_input = user_input.split("::")
+        Runners.append(user_input)
