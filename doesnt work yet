@@ -1,11 +1,37 @@
+import statistics
+
 
 Runners = []
+RunnersTime = []
 print("Enter the runners numbers and their times separated by two colons e.g.(123::300)")
 print("Type 'END' when you are done")
 while True:
     user_input = input()
+    temp = user_input.split("::")
     if user_input =="END":
         break
     else:
-        user_input = user_input.split("::")
-        Runners.append(user_input)
+        Runners.append(int(temp[0]))
+        RunnersTime.append(int(temp[1]))
+
+print("Total runners:",len(Runners))
+
+avg = statistics.mean(RunnersTime)
+avgmin = int(avg/60)
+avg -= (avgmin*60)
+avgsec = int(avg)
+print("Average Time:",avgmin,"minutes,",avgsec,"seconds")
+
+slowest = max(RunnersTime)
+slowestmin = int(slowest/60)
+slowest -= (slowestmin*60)
+slowestsec = slowest
+print("Slowest Time:",slowestmin,"minutes,",slowestsec,"seconds")
+
+fastest = min(RunnersTime)
+fastestmin = int(fastest/60)
+fastest -= (fastestmin*60)
+fastestsec = fastest
+print("Fastest Time:",fastestmin,"minutes,",fastestsec,"seconds")
+
+print(quick)
