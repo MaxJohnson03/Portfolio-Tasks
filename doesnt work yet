@@ -14,6 +14,11 @@ while True:
         Runners.append(int(temp[0]))
         RunnersTime.append(int(temp[1]))
 
+
+
+
+
+
 print("Total runners:",len(Runners))
 
 avg = statistics.mean(RunnersTime)
@@ -34,4 +39,7 @@ fastest -= (fastestmin*60)
 fastestsec = fastest
 print("Fastest Time:",fastestmin,"minutes,",fastestsec,"seconds")
 
-print(quick)
+New_list = list(map(list, zip(Runners, RunnersTime)))
+Sorted_list = sorted(New_list, key=lambda x: x[1], reverse=False)
+Fastest = Sorted_list[0][0]
+print(f"The fastest runner was #{Fastest}")
