@@ -1,24 +1,25 @@
 import statistics
 
-
 Runners = []
 RunnersTime = []
+RunnerCount = 0
 print("Enter the runners numbers and their times separated by two colons e.g.(123::300)")
 print("Type 'END' when you are done")
 while True:
     user_input = input()
     temp = user_input.split("::")
+    if user_input == "END" and RunnerCount == 0:
+        print("No data found, nothing to do.")
+        exit()
     if user_input =="END":
         break
+    elif temp[0]=="" or temp[1]=="":
+        print("Error in data stream, Ignoring, Continue.")
     else:
         Runners.append(int(temp[0]))
         RunnersTime.append(int(temp[1]))
-
-
-
-
-
-
+        RunnerCount +=1
+        
 print("Total runners:",len(Runners))
 
 avg = statistics.mean(RunnersTime)
