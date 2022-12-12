@@ -1,0 +1,22 @@
+import random
+import re
+
+student_number = []
+student_name = []
+emails = []
+
+with open("students.txt", 'r') as f:
+    for line in f:
+        student_number.append(line[0:7])
+        student_name.append(line[9:].split(", "))
+
+    for name in student_name:
+        name[1] = name[1].strip()
+        name[0] = re.sub(r"[^a-zA-z/s]", "", name[0])
+        uppercase = ".".join(char for char in name[1] if char.isupper())
+        num = random.randint(1000, 9999)
+        emails.append(uppercase.lower() + "." + name[0].lower() + str(num) + "@poppleton.ac.uk\n")
+
+with open("emails.txt", 'a') as f2:
+    for num, email in zip(student_number, emails):
+        f2.write(f"{num}{email}")
